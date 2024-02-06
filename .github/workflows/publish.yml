@@ -7,11 +7,6 @@ on:
         description: 'Version number'
         required: true
 
-permissions:
-  contents: write
-  packages: write
-  actions: read   
-
 jobs:
  
   publish:
