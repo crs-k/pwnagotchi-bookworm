@@ -92,7 +92,7 @@ jobs:
         echo $(ls /proc/sys/fs/binfmt_misc | grep qemu-aarch64)
 
     - name: Run Makefile
-      run: make
+      run: make -d
       env: 
         PWN_VERSION: ${{ steps.tag-setter.outputs.TAG }}
 
