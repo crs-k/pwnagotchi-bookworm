@@ -1,4 +1,4 @@
-PACKER_VERSION := 1.10.0
+PACKER_VERSION := 1.10.1
 PWN_HOSTNAME := pwnagotchi
 PWN_VERSION := $(shell cut -d"'" -f2 < pwnagotchi/_version.py)
 
@@ -64,5 +64,5 @@ pwnagotchi: $(SDIST) builder/pwnagotchi.json.pkr.hcl builder/raspberrypi64.yml $
 image: pwnagotchi
 
 clean:
-	- rm -rf build dist pwnagotchi.egg-info
+	- rm -rf dist pwnagotchi.egg-info
 	- rm -f $(PACKER)

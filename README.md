@@ -2,10 +2,13 @@
 <a href="https://github.com/jayofelony/pwnagotchi-bookworm/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/jayofelony/pwnagotchi-bookworm.svg"></a><br/>
 **This fork of [Pwnagotchi](https://www.pwnagotchi.ai) is only for 64-bit Raspberry Pi's. Such as the 02W, 3(b+) and 4(b) and the new Raspberry Pi 5!!.**
 
+The RPi5 can only be used headless currently. (without display.)
+
+
 If you are using an older 32-bit version Raspberry Pi, ZeroWH, use this [fork](https://github.com/jayofelony/pwnagotchi-torch/releases/tag/v2.6.4) and make sure you download the `armhf` version.
 
 ---
-Download the latest image file [here](https://github.com/jayofelony/pwnagotchi-bookworm/releases/tag/v2.7.9), and let it auto-update from here on out.
+Download the latest image file [here](https://github.com/jayofelony/pwnagotchi-bookworm/releases/tag/v2.8.2), and let it auto-update from here on out.
 
 **Use RPi imager to flash, please don't flash a new user as this will mess with logs created.**
   - Select `Use Custom Image`
