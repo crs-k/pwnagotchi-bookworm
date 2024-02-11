@@ -46,9 +46,12 @@ class MemTemp(plugins.Plugin):
         'freq': 'cpu_freq'
     }
     DEFAULT_FIELDS = ['mem', 'cpu', 'temp']
-    LINE_SPACING = 10
+    LINE_SPACING = 15
     LABEL_SPACING = 0
     FIELD_WIDTH = 4
+
+    def __init__(self):
+        self.options = dict()
 
     def on_loaded(self):
         self._last_cpu_load = self._cpu_stat()
@@ -65,7 +68,7 @@ class MemTemp(plugins.Plugin):
         Returns the splitted first line of the /proc/stat file
         """
         with open('/proc/stat', 'rt') as fp:
-            return list(map(int,fp.readline().split()[1:]))
+            return list(map(int, fp.readline().split()[1:]))
 
     def cpu_load_since(self):
         """
@@ -144,6 +147,12 @@ class MemTemp(plugins.Plugin):
             elif ui.is_waveshare2in7():
                 h_pos = (192, 138)
                 v_pos = (211, 122)
+            elif ui.is_waveshare3in52():
+                h_pos = (220, 190)
+                v_pos = (200, 180)
+            elif ui.is_waveshare35lcd():
+                h_pos = (320, 260)
+                v_pos = (300, 250)
             else:
                 h_pos = (155, 76)
                 v_pos = (175, 61)

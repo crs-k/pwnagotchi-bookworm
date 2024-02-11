@@ -11,26 +11,25 @@ class Waveshare35lcd(DisplayImpl):
         super(Waveshare35lcd, self).__init__(config, 'waveshare35lcd')
 
     def layout(self):
-        fonts.setup(12, 10, 12, 70, 25, 9)
+        fonts.setup(16, 14, 16, 135, 31, 15)
         self._layout['width'] = 480
         self._layout['height'] = 320
-        self._layout['face'] = (110, 100)
-        self._layout['name'] = (10, 30)
-        self._layout['channel'] = (0, 0)
-        self._layout['aps'] = (80, 0)
-        self._layout['uptime'] = (400, 0)
-        self._layout['line1'] = [0, 14, 480, 14]
-        self._layout['line2'] = [0,300, 480, 300]
-        self._layout['friend_face'] = (0, 220)
-        self._layout['friend_name'] = (50, 225)
-        self._layout['shakes'] = (10, 300)
-        self._layout['mode'] = (440, 300)
+        self._layout['face'] = (0, 50)
+        self._layout['name'] = (0, 0)
+        self._layout['channel'] = (400, 0)
+        self._layout['aps'] = (0, 320)
+        self._layout['uptime'] = (120, 0)
+        self._layout['line1'] = [0, 24, 480, 24]
+        self._layout['line2'] = [0, 300, 480, 300]
+        self._layout['friend_face'] = (0, 195)
+        self._layout['friend_name'] = (0, 185)
+        self._layout['shakes'] = (100, 300)
+        self._layout['mode'] = (0,300)
         self._layout['status'] = {
-            'pos': (80, 200),
-            'font': fonts.status_font(fonts.Medium),
+            'pos': (3, 220),
+            'font': fonts.status_font(fonts.Small),
             'max': 100
         }
-
         return self._layout
 
     def refresh(self):
@@ -39,7 +38,7 @@ class Waveshare35lcd(DisplayImpl):
     def initialize(self):
         from pwnagotchi.ui.hw.libs.fb import fb
         self._display = fb
-        logging.info("initializing waveshare 3,5inch lcd display")
+        logging.info("Initializing Waveshare 3.5inch LCD display")
         self._display.ready_fb(i=0)
         self._display.black_scr()
 
