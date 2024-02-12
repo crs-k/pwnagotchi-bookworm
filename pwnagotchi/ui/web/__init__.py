@@ -1,7 +1,7 @@
 import os
 from threading import Lock
 
-frame_path = '/var/tmp/pwnagotchi/pwnagotchi.png'
+frame_path = '/home/pi/images/pwnagotchi.png'
 frame_format = 'PNG'
 frame_ctype = 'image/png'
 frame_lock = Lock()
