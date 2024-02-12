@@ -190,7 +190,7 @@ class MemTemp(plugins.Plugin):
             ui.add_element(
                 'memtemp_data',
                 Text(
-                    color=PRIMARY,
+                    color=SECONDARY,
                     value=" ".join([self.pad_text("-") for x in self.fields]),
                     position=(h_pos_x, h_pos_y + line_spacing),
                     font=fonts.Small,

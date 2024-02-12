@@ -59,8 +59,8 @@ class View(object):
                                    label_font=fonts.Bold,
                                    text_font=fonts.Medium),
 
-            'line1': Line(self._layout['line1'], color=LIGHT_TEXT),
-            'line2': Line(self._layout['line2'], color=LIGHT_TEXT),
+            'line1': Line(self._layout['line1'], color=PRIMARY),
+            'line2': Line(self._layout['line2'], color=PRIMARY),
 
             'face': Text(value=faces.SLEEP, position=self._layout['face'], color=PRIMARY, font=fonts.Huge),
 
@@ -77,9 +77,9 @@ class View(object):
                            # the current maximum number of characters per line, assuming each character is 6 pixels wide
                            max_length=self._layout['status']['max']),
 
-            'shakes': LabeledValue(label='HANDSHAKES:', value='0 (00)', label_color=PRIMARY, value_color=SECONDARY,
+            'shakes': LabeledValue(label='SHAKES:', value='0 (00)', label_color=PRIMARY, value_color=SECONDARY,
                                    position=self._layout['shakes'], label_font=fonts.Bold,
-                                   text_font=fonts.Medium),
+                                   text_font=fonts.Medium, label_spacing=35),
             'mode': Text(value='AUTO', position=self._layout['mode'],
                          font=fonts.Bold, color=INFO),
         })

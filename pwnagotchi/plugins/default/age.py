@@ -26,11 +26,11 @@ class Age(plugins.Plugin):
 
 
     def on_ui_setup(self, ui):
-        ui.add_element('Age', LabeledValue(label_color=PRIMARY, value_color=SECONDARY, label='♥ Age: ', value=0,
+        ui.add_element('Age', LabeledValue(label_color=PRIMARY, value_color=SECONDARY, label='Age:', value=0,
                                            position=(int(self.options["age_x_coord"]),
                                                      int(self.options["age_y_coord"])),
                                            label_font=fonts.Bold, text_font=fonts.Medium))
-        ui.add_element('Strength', LabeledValue(label_color=PRIMARY, value_color=SECONDARY, label='Str: ', value=0,
+        ui.add_element('Strength', LabeledValue(label_color=PRIMARY, value_color=SECONDARY, label='Str:', value=0,
                                                 position=(int(self.options["str_x_coord"]),
                                                           int(self.options["str_y_coord"])),
                                                 label_font=fonts.Bold, text_font=fonts.Medium))
