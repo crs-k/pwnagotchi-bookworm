@@ -30,11 +30,11 @@ jobs:
         pip install -r requirements.txt
 
 
-        - name: Test 64-bit - Raspberry Pi 02w, 3 and 4
+        - name: Test 64-bit - Raspberry Pi 5
           uses: pguyot/arm-runner-action@HEAD
           with:
             base_image: https://dietpi.com/downloads/images/DietPi_ASUSTB-ARMv7-Bookworm.7z
             cpu: cortex-a53
             commands: |
-                echo "ARM TEST - Raspberry Pi 02w, 3 and 4"
+                echo "ARM TEST - Raspberry Pi 5"
                 test `uname -m` = 'aarch64'
