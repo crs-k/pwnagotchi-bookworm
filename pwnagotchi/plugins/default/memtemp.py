@@ -25,7 +25,7 @@
 # - Updated to version 1.0.2
 ###############################################################
 from pwnagotchi.ui.components import LabeledValue, Text
-from pwnagotchi.ui.view import BLACK
+from pwnagotchi.ui.view import PRIMARY,SECONDARY
 import pwnagotchi.ui.fonts as fonts
 import pwnagotchi.plugins as plugins
 import pwnagotchi
@@ -150,7 +150,7 @@ class MemTemp(plugins.Plugin):
             elif ui.is_waveshare3in52():
                 h_pos = (220, 190)
                 v_pos = (200, 180)
-            elif ui.is_waveshare35lcd():
+            elif ui.is_waveshare3in5lcd():
                 h_pos = (320, 260)
                 v_pos = (300, 250)
             else:
@@ -165,7 +165,7 @@ class MemTemp(plugins.Plugin):
                 ui.add_element(
                     f"memtemp_{field}",
                     LabeledValue(
-                        color=BLACK,
+                        label_color=PRIMARY, value_color=SECONDARY,
                         label=f"{self.pad_text(field)}:",
                         value="-",
                         position=(v_pos_x, v_pos_y + (idx * line_spacing)),
@@ -181,7 +181,7 @@ class MemTemp(plugins.Plugin):
             ui.add_element(
                 'memtemp_header',
                 Text(
-                    color=BLACK,
+                    color=PRIMARY,
                     value=" ".join([self.pad_text(x) for x in self.fields]),
                     position=(h_pos_x, h_pos_y),
                     font=fonts.Small,
@@ -190,7 +190,7 @@ class MemTemp(plugins.Plugin):
             ui.add_element(
                 'memtemp_data',
                 Text(
-                    color=BLACK,
+                    color=PRIMARY,
                     value=" ".join([self.pad_text("-") for x in self.fields]),
                     position=(h_pos_x, h_pos_y + line_spacing),
                     font=fonts.Small,

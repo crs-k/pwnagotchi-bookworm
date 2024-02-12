@@ -24,7 +24,7 @@ import pwnagotchi
 import pwnagotchi.plugins as plugins
 import pwnagotchi.ui.fonts as fonts
 from pwnagotchi.ui.components import LabeledValue
-from pwnagotchi.ui.view import BLACK
+from pwnagotchi.ui.view import PRIMARY,SECONDARY
 
 CW2015_ADDRESS = 0X62
 CW2015_REG_VCELL = 0X02
@@ -79,7 +79,7 @@ class UPSLite(plugins.Plugin):
         self.ups = UPS()
 
     def on_ui_setup(self, ui):
-        ui.add_element('ups', LabeledValue(color=BLACK, label='UPS', value='0%', position=(ui.width() / 2 + 15, 0),
+        ui.add_element('ups', LabeledValue(label_color=PRIMARY, value_color=SECONDARY, label='UPS', value='0%', position=(ui.width() / 2 + 15, 0),
                                            label_font=fonts.Bold, text_font=fonts.Medium))
 
     def on_unload(self, ui):

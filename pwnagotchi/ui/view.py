@@ -4,7 +4,7 @@ import random
 import time
 from threading import Lock
 
-from PIL import ImageDraw
+from PIL import ImageDraw, Image
 
 import pwnagotchi
 import pwnagotchi.plugins as plugins
@@ -12,12 +12,20 @@ import pwnagotchi.ui.faces as faces
 import pwnagotchi.ui.fonts as fonts
 import pwnagotchi.ui.web as web
 import pwnagotchi.utils as utils
-from pwnagotchi.ui.components import *
+from pwnagotchi.ui.components import LabeledValue, Line, Text
 from pwnagotchi.ui.state import State
 from pwnagotchi.voice import Voice
 
-WHITE = 0x00
-BLACK = 0xFF
+WHITE = 0xFF
+BLACK = 0x00
+DARK_BACKGROUND = (34, 34, 34)  # Dark gray, almost black
+LIGHT_TEXT = (233, 236, 239)  # Light gray, almost white
+PRIMARY = (90, 98, 104)  # Darker gray
+SECONDARY = (114, 137, 218)  # A shade of blue
+SUCCESS = (67, 181, 129)  # A shade of green
+WARNING = (250, 166, 26)  # A shade of orange
+DANGER = (224, 108, 117)  # A shade of red
+INFO = (229, 192, 123)  # A shade of yellow
 ROOT = None
 
 
@@ -40,40 +48,40 @@ class View(object):
         self._width = self._layout['width']
         self._height = self._layout['height']
         self._state = State(state={
-            'channel': LabeledValue(color=BLACK, label='CH   ', value='00', position=self._layout['channel'],
+            'channel': LabeledValue(label_color=PRIMARY, value_color=SECONDARY, label='CH:', value='00', position=self._layout['channel'],
                                     label_font=fonts.Bold,
                                     text_font=fonts.Medium),
-            'aps': LabeledValue(color=BLACK, label='APS   ', value='0 (00)', position=self._layout['aps'],
+            'aps': LabeledValue(label_color=PRIMARY, value_color=SECONDARY, label='APS:', value='0 (00)', position=self._layout['aps'],
                                 label_font=fonts.Bold,
                                 text_font=fonts.Medium),
 
-            'uptime': LabeledValue(color=BLACK, label='UP   ', value='00:00:00', position=self._layout['uptime'],
+            'uptime': LabeledValue(label_color=PRIMARY, value_color=SECONDARY, label='UP:', value='00:00:00', position=self._layout['uptime'],
                                    label_font=fonts.Bold,
                                    text_font=fonts.Medium),
 
-            'line1': Line(self._layout['line1'], color=BLACK),
-            'line2': Line(self._layout['line2'], color=BLACK),
+            'line1': Line(self._layout['line1'], color=LIGHT_TEXT),
+            'line2': Line(self._layout['line2'], color=LIGHT_TEXT),
 
-            'face': Text(value=faces.SLEEP, position=self._layout['face'], color=BLACK, font=fonts.Huge),
+            'face': Text(value=faces.SLEEP, position=self._layout['face'], color=PRIMARY, font=fonts.Huge),
 
-            # 'friend_face': Text(value=None, position=self._layout['friend_face'], font=fonts.Bold, color=BLACK),
-            'friend_name': Text(value=None, position=self._layout['friend_name'], font=fonts.BoldSmall, color=BLACK),
+            'friend_face': Text(value=None, position=self._layout['friend_face'], font=fonts.Bold, color=LIGHT_TEXT),
+            'friend_name': Text(value=None, position=self._layout['friend_name'], font=fonts.BoldSmall, color=PRIMARY),
 
-            'name': Text(value='%s>' % 'pwnagotchi', position=self._layout['name'], color=BLACK, font=fonts.Bold),
+            'name': Text(value='%s' % 'pwnagotchi', position=self._layout['name'], color=PRIMARY, font=fonts.Bold),
 
             'status': Text(value=self._voice.default(),
                            position=self._layout['status']['pos'],
-                           color=BLACK,
+                           color=PRIMARY,
                            font=self._layout['status']['font'],
                            wrap=True,
                            # the current maximum number of characters per line, assuming each character is 6 pixels wide
                            max_length=self._layout['status']['max']),
 
-            'shakes': LabeledValue(label='PWND   ', value='0 (00)', color=BLACK,
+            'shakes': LabeledValue(label='HANDSHAKES:', value='0 (00)', label_color=PRIMARY, value_color=SECONDARY,
                                    position=self._layout['shakes'], label_font=fonts.Bold,
                                    text_font=fonts.Medium),
             'mode': Text(value='AUTO', position=self._layout['mode'],
-                         font=fonts.Bold, color=BLACK),
+                         font=fonts.Bold, color=PRIMARY),
         })
 
         if state:
@@ -371,7 +379,7 @@ class View(object):
             state = self._state
             changes = state.changes(ignore=self._ignore_changes)
             if force or len(changes):
-                self._canvas = Image.new('1', (self._width, self._height), WHITE)
+                self._canvas = Image.new('RGB', (self._width, self._height), DARK_BACKGROUND)
                 drawer = ImageDraw.Draw(self._canvas)
 
                 plugins.on('ui_update', self)

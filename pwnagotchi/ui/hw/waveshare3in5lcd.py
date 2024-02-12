@@ -6,9 +6,9 @@ from pwnagotchi.ui.hw.base import DisplayImpl
 import os, time
 
 
-class Waveshare35lcd(DisplayImpl):
+class Waveshare3in5lcd(DisplayImpl):
     def __init__(self, config):
-        super(Waveshare35lcd, self).__init__(config, 'waveshare35lcd')
+        super(Waveshare3in5lcd, self).__init__(config, 'waveshare3in5lcd')
 
     def layout(self):
         fonts.setup(16, 14, 16, 135, 31, 15)

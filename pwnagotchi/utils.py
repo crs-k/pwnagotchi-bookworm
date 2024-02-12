@@ -321,8 +321,8 @@ def load_config(args):
     elif config['ui']['display']['type'] in 'displayhatmini':
         config['ui']['display']['type'] = 'displayhatmini'
 
-    elif config['ui']['display']['type'] in 'waveshare35lcd':
-        config['ui']['display']['type'] = 'waveshare35lcd'
+    elif config['ui']['display']['type'] in 'waveshare3in5lcd':
+        config['ui']['display']['type'] = 'waveshare3in5lcd'
 
     elif config['ui']['display']['type'] in 'waveshare1in54c':
         config['ui']['display']['type'] = 'waveshare1in54c'
