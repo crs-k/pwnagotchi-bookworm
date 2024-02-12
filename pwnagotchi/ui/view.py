@@ -20,7 +20,7 @@ WHITE = 0xFF
 BLACK = 0x00
 DARK_BACKGROUND = (34, 34, 34)  # Dark gray, almost black
 LIGHT_TEXT = (233, 236, 239)  # Light gray, almost white
-PRIMARY = (90, 98, 104)  # Darker gray
+PRIMARY = (130, 138, 144)  # Darker gray
 SECONDARY = (114, 137, 218)  # A shade of blue
 SUCCESS = (67, 181, 129)  # A shade of green
 WARNING = (250, 166, 26)  # A shade of orange
@@ -67,11 +67,11 @@ class View(object):
             'friend_face': Text(value=None, position=self._layout['friend_face'], font=fonts.Bold, color=LIGHT_TEXT),
             'friend_name': Text(value=None, position=self._layout['friend_name'], font=fonts.BoldSmall, color=PRIMARY),
 
-            'name': Text(value='%s' % 'pwnagotchi', position=self._layout['name'], color=PRIMARY, font=fonts.Bold),
+            'name': Text(value='%s' % 'pwnagotchi', position=self._layout['name'], color=SUCCESS, font=fonts.Bold),
 
             'status': Text(value=self._voice.default(),
                            position=self._layout['status']['pos'],
-                           color=PRIMARY,
+                           color=INFO,
                            font=self._layout['status']['font'],
                            wrap=True,
                            # the current maximum number of characters per line, assuming each character is 6 pixels wide
@@ -81,7 +81,7 @@ class View(object):
                                    position=self._layout['shakes'], label_font=fonts.Bold,
                                    text_font=fonts.Medium),
             'mode': Text(value='AUTO', position=self._layout['mode'],
-                         font=fonts.Bold, color=PRIMARY),
+                         font=fonts.Bold, color=INFO),
         })
 
         if state:
